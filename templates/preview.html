@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <title>Iris Web App/View dataset</title>
+</head>
+<body>
+    <nav class="navbar">        <!--Creating a navbar-->
+        <h1 class="navbar-brand text-secondary"><strong>IRIS WEB APP</strong></h1>
+    </nav>
+     <!--Form Design-->
+     <div class="container">
+        <div class="row">
+            <div class="offset-2 col-md-8">
+                <div class="card mt-500 bg-secondary">
+                    <div class="card-body">
+                        <h2 class="text-md-center text-light"><strong>IRIS SPECIES PREDICTOR</strong></h2><br>
+                        <h5 class="text-md-center text-dark"><strong>ML Web App(DATASET)</strong></h5><br>
+                        <a href="{{url_for('home')}}" class="btn btn-light btn-lg offset-5"><strong>BACK</strong></a><br><br>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br>
+        <div class="container">
+            {{ data_view.to_html(classes="table striped", na_rep="-") | safe }}   <!--na_rep : Null value Representation-->
+            <!-- | safe : So that it comes out as a table and not the underlying html code. Try without it to understand better.-->
+        </div>
+        <footer>
+            <h5 class="text-center text-light"><strong>&copy; Balaka Biswas</strong></h5>
+        </footer>
+    </div>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+</body>
+</html>

@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <title>Iris Web App</title>
+</head>
+<body class="bg-secondary">
+    <nav class="navbar">        <!--Creating a navbar-->
+        <h1 class="navbar-brand text-light"><strong>IRIS WEB APP</strong></h1>
+    </nav>
+     <!--Form Design-->
+     <div class="container">
+        <div class="row">
+            <div class="offset-2 col-md-8">
+                <div class="card mt-500">
+                    <div class="card-body">
+                        <h2 class="text-md-center text-danger"><strong>IRIS SPECIES PREDICTOR</strong></h2><br>
+                        <h5 class="text-md-center text-dark"><strong>ML Web App</strong></h5><br>
+                        <a href="{{url_for('home')}}" class="btn btn-secondary btn-lg offset-5"><strong>RESET</strong></a><br><br>
+                        <a href="{{url_for('preview')}}" class="btn btn-secondary btn-lg offset-4"><strong>PREVIEW DATASET</strong></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br>
+    
+        
+        <div class="container">
+            <div class="row">
+                <div class="offset-2 col-md-8">
+                    <div class="card mt-500 bg-info">
+                        <div class="card-body bg-info">
+                            <section class="section offset-3">
+                                <div class="container">
+                                    <div class="row">
+                                        <div class="col m-5">
+                                            <div class="card-panel">
+                                                <form action="{{url_for('analyze')}}", method="POST">
+                                                    <div class="input-field">
+                                                        <p class="range-field">
+                                                            <input type="range", name="sepal_length", min="4", max="8", value="0", step="0.1">
+                                                        </p>
+                                                        <label for="Sepal Length" class=" text-light"><strong>Sepal Length</strong></label>
+                                                    </div>
+                                                    <div class="input-field">
+                                                        <p class="range-field">
+                                                            <input type="range", name="sepal_width", min="2", max="5", value="0", step="0.1">
+                                                        </p>
+                                                        <label for="Sepal Width" class=" text-light"><strong>Sepal Width</strong></label>
+                                                    </div>
+                                                    <div class="input-field">
+                                                        <p class="range-field">
+                                                            <input type="range", name="petal_length", min="0", max="7", value="0", step="0.1">
+                                                        </p>
+                                                        <label for="Petal Length" class=" text-light"><strong>Petal Length</strong></label>
+                                                    </div>
+                                                    <div class="input-field">
+                                                        <p class="range-field">
+                                                            <input type="range", name="petal_width", min="0", max="3", value="0", step="0.1">
+                                                        </p>
+                                                        <label for="Petal Width" class=" text-light"><strong>Petal Width</strong></label>
+                                                    </div>
+                                                    <br>
+                                                    <div class="input-field">
+                                                        <div class="text-light"><strong>SELECT ML MODEL</strong></div>
+                                                        <select name="model_choice", id="role">
+                                                            <option value="" disabled selected><strong>Select Model</strong></option>
+                                                            <option value="lgrmod">Logistic Regression</option>
+                                                            <option value="knnmod">K Nearest Neighbors</option>
+                                                        </select>
+                                                    </div>
+                                                    <br>
+                                                    <button class="btn btn-success btn-sm"><strong>PREDICT</strong></button>
+                                                    <a href="{{url_for('home')}}", class="btn btn-danger btn-sm"><strong>CLEAR</strong></a>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </section>
+                            <section class="section offset-0">
+                                <p class="text-light text-md-center"><strong>Sepal Length : {{ sepal_length }}</strong></p>
+                                <p class="text-light text-md-center"><strong>Sepal Width : {{ sepal_width }}</strong></p>
+                                <p class="text-light text-md-center"><strong>Petal Length : {{ petal_length }}</strong></p>
+                                <p class="text-light text-md-center"><strong>Petal Width : {{ petal_width }}</strong></p>
+                                <br>
+                                <p class="text-light text-md-center"><strong>PREDICTION RESULT :</strong></p>
+                                <p class="text-danger text-md-center"><strong>{{ pred }}</strong></p>
+                            </section>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+ 
+        <footer>
+            <h5 class="text-center text-light"><strong>&copy; Balaka Biswas</strong></h5>
+        </footer>
+    </div>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+</body>
+</html>
